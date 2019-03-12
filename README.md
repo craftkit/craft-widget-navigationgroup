@@ -10,7 +10,7 @@ Classic stack navigation.
 
 <!-- automatically loaded into Craft.Widget.NavigationGroup -->
 <script src="https://unpkg.com/@craftkit/craft-uikit/dist/craft-uikit.min.js"></script>
-<script src="https://unpkg.com/@craftkit/craft-uikit/dist/craft-widget-navigationgroup.min.js"></script>
+<script src="https://unpkg.com/@craftkit/craft-widget-navigationgroup/dist/craft-widget-navigationgroup.min.js"></script>
 <script>
     window.onload = function(){
         Craft.Core.Bootstrap.boot(App);
@@ -54,7 +54,7 @@ Note: Below sample is not implementing history management.
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover"/>
     <title>Navi sample</title>
     <script src="https://unpkg.com/@craftkit/craft-uikit/dist/craft-uikit.min.js"></script>
-    <script src="https://unpkg.com/@craftkit/craft-uikit/dist/craft-widget-navigationgroup.min.js"></script>
+    <script src="https://unpkg.com/@craftkit/craft-widget-navigationgroup/dist/craft-widget-navigationgroup.min.js"></script>
     <style>html,body { width: 100%; height: 100%; overflow: hidden; box-sizing:border-box; margin:0; padding:0; }</style>
     <script>
         window.onload = function(){
