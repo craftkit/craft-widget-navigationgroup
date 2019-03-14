@@ -39,7 +39,7 @@ export class PageController extends Craft.Widget.NavigationGroup.ViewController 
 
 ## Demo
 
-See [craft-demoapp]() for more about this widget.
+See [craft-sample-photoalbum](https://github.com/craftkit/craft-sample-photoalbum) for more about this widget.
 
 
 ## Sample
