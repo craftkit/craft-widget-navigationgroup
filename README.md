@@ -6,10 +6,9 @@ Classic stack navigation.
 ## How to use
 
 ```html 
-<script src="craft-uikit.min.js"></script>
+<script src="https://unpkg.com/@craftkit/craft-uikit/dist/craft-uikit.min.js"></script>
 
 <!-- automatically loaded into Craft.Widget.NavigationGroup -->
-<script src="https://unpkg.com/@craftkit/craft-uikit/dist/craft-uikit.min.js"></script>
 <script src="https://unpkg.com/@craftkit/craft-widget-navigationgroup/dist/craft-widget-navigationgroup.min.js"></script>
 <script>
     window.onload = function(){
