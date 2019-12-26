@@ -74,11 +74,11 @@ Note: Below sample is not implementing history management.
         };
         class Menu extends Craft.UI.View {
             openFirst(){
-                this.viewController.open(new FirstPage());
+                this.viewController.open({page:new FirstPage()});
                 this.viewController.toggleSidemenu();
             }
             openSecond(){
-                this.viewController.open(new SecondPage());
+                this.viewController.open({page:new SecondPage()});
                 this.viewController.toggleSidemenu();
             }
             style(){
@@ -99,7 +99,7 @@ Note: Below sample is not implementing history management.
         }
         class FirstPage extends Craft.UI.View {
             next(){
-                this.viewController.open(new SecondPage());
+                this.viewController.open({page:new SecondPage()});
             }
             style(){
                 return `

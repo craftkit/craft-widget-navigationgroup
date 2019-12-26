@@ -38,7 +38,7 @@ export class Page extends Craft.UI.View {
 			}
 			:host {
 				width: 100%;
-				height: calc( 100vh - ${this.viewController.header_height}px - ${this.viewController.footer_height}px - env(safe-area-inset-bottom) - env(safe-area-inset-top) );
+				height: calc( 100vh - ${rootViewController.header_height}px - ${rootViewController.footer_height}px - env(safe-area-inset-bottom) - env(safe-area-inset-top) );
 				max-width: 100%;
 				max-height: 100%;
 				overflow-x: hidden;

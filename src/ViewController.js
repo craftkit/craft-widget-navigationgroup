@@ -161,7 +161,7 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 		
 		// at last, open initial page if defined
 		if( this.initialPage ){
-			this.open(this.initialPage);
+			this.open({page:this.initialPage});
 		}
 		
 		if( callback ){ callback() }
@@ -204,9 +204,10 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 	 * 
 	 * (Concrete open method will be defined in viewDidLoad according to the disableBackBtn flag)
 	 * 
-	 * @param {Craft.Core.Component} newpage - page component
-	 * @param {Function} callback - callback
 	 * @param {Object} options - options
+	 * @param {Craft.Core.Component} options.page - page component
+	 * @param {Function} options.callback - callback
+	 * @param {Craft.Core.Route} options.route - Route object
 	 * @param {Boolean} options.earlycallback - invoke callback before page transition
 	 */
 	open(){
@@ -218,16 +219,19 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 	 * 
 	 * @private
 	 * 
-	 * @param {Craft.Core.Component} newpage - page component
-	 * @param {Function} callback - callback
 	 * @param {Object} options - options
+	 * @param {Craft.Core.Component} options.page - page component
+	 * @param {Function} options.callback - callback
+	 * @param {Craft.Core.Route} options.route - Route object
 	 * @param {Boolean} options.earlycallback - invoke callback before page transition
 	 */
-	open_with_anim(newpage,callback,options){
-		if( !options ){ options = {}; }
+	open_with_anim(options){
+		let page     = options.page;
+		let callback = options.callback;
+		let route    = options.route;
 		
 		let disappearingView = this.currentView;
-		let appearingView    = newpage;
+		let appearingView    = page;
 		
 		appearingView.setViewController(this);
 		
@@ -314,16 +318,19 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 	 * 
 	 * @private
 	 * 
-	 * @param {Craft.Core.Component} newpage - page component
-	 * @param {Function} callback - callback
 	 * @param {Object} options - options
+	 * @param {Craft.Core.Component} options.page - page component
+	 * @param {Function} options.callback - callback
+	 * @param {Craft.Core.Route} options.route - Route object
 	 * @param {Boolean} options.earlycallback - invoke callback before page transition
 	 */
-	open_without_anim(newpage,callback,options){
-		if( !options ){ options = {}; }
+	open_with_anim(options){
+		let page     = options.page;
+		let callback = options.callback;
+		let route    = options.route;
 		
 		let disappearingView = this.currentView;
-		let appearingView    = newpage;
+		let appearingView    = page;
 		
 		if( !appearingView.isViewLoaded ){
 			appearingView.loadView();
@@ -401,9 +408,9 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 	 * 
 	 * @override
 	 */
-	didReceivePopstate(event){
+	didReceivePopstate(event,launch){
 		this.reset(); // browser back/forward should reset navigation
-		super.didReceivePopstate(event); // use default strategy (hash routing)
+		super.didReceivePopstate(event,launch); // use default strategy (hash routing)
 	}
 	
 	/** 
