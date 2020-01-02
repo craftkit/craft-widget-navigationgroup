@@ -20,8 +20,8 @@ Classic stack navigation.
 or
 
 ```javascript 
-import * as Craft from 'craft-uikit';
-import * as NavigationGroup from 'craft-widget-navigationgroup';
+import * as Craft from '@craftkit/craft-uikit';
+import * as NavigationGroup from '@craftkit/craft-widget-navigationgroup';
 
 // inject into Craft.Widget. (this is just a cosmetic function)
 Craft.usePackage(NavigationGroup);

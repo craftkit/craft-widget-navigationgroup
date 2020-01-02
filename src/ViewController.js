@@ -1,5 +1,5 @@
 
-import * as Craft from 'craft-uikit';
+import * as Craft from '@craftkit/craft-uikit';
 
 import { Header } from './Header.js';
 import { Footer } from './Footer.js';
