@@ -289,7 +289,11 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 					duration   : this.GENERAL_ANIM_DURATION,
 					callback   : () => {
 						if( appearingView.path ){
-							window.history.pushState(appearingView.componentId,null,appearingView.path);
+							window.history.pushState(
+								appearingView.componentId,
+								null,
+								Craft.Core.Context.getRouter().normalize(appearingView.path)
+							);
 						}
 						if( !options.earlycallback && callback ){ callback(); }
 						if( this.BackButton ){
@@ -304,6 +308,13 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 					properties : { 'left': '0px', opacity: 1 },
 					duration   : this.GENERAL_ANIM_DURATION,
 					callback   : () => {
+						if( appearingView.path ){
+							window.history.pushState(
+								appearingView.componentId,
+								null,
+								Craft.Core.Context.getRouter().normalize(appearingView.path)
+							);
+						}
 						if( !options.earlycallback && callback ){ callback(); }
 						this.relayoutNavigationElements();
 					}
@@ -380,7 +391,11 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 					properties : { opacity: 1 },
 					duration   : this.GENERAL_ANIM_DURATION,
 					callback   : () => {
-						window.history.pushState(appearingView.componentId,null,appearingView.path);
+						window.history.pushState(
+							appearingView.componentId,
+							null,
+							Craft.Core.Context.getRouter().normalize(appearingView.path)
+						);
 						
 						if( !options.earlycallback && callback ){ callback(); }
 						
@@ -393,8 +408,12 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 					properties : { opacity: 1 },
 					duration   : this.GENERAL_ANIM_DURATION,
 					callback   : () => {
+						window.history.pushState(
+							appearingView.componentId,
+							null,
+							Craft.Core.Context.getRouter().normalize(appearingView.path)
+						);
 						if( !options.earlycallback && callback ){ callback(); }
-						
 						this.relayoutNavigationElements();
 					}
 				});
@@ -410,7 +429,7 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 	 */
 	didReceivePopstate(event,launch){
 		this.reset(); // browser back/forward should reset navigation
-		super.didReceivePopstate(event,launch); // use default strategy (hash routing)
+		super.didReceivePopstate(event,launch);
 	}
 	
 	/** 
@@ -420,7 +439,11 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 	 * @protected
 	 */
 	pushState(){
-		window.history.pushState(this.currentView.componentId,null,this.currentView.path);
+		window.history.pushState(
+			this.currentView.componentId,
+			null,
+			Craft.Core.Context.getRouter().normalize(this.currentView.path)
+		);
 	}
 	
 	/** 
@@ -484,7 +507,11 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 			this.currentView = appearingView;
 			
 			if( appearingView.path ){
-				window.history.pushState(appearingView.componentId,null,appearingView.path);
+				window.history.pushState(
+					appearingView.componentId,
+					null,
+					Craft.Core.Context.getRouter().normalize(appearingView.path)
+				);
 			}
 			
 			if( this.stack.length === 1 ){
