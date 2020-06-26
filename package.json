@@ -1,12 +1,12 @@
 {
   "name": "@craftkit/craft-widget-navigationgroup",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Classic stack navigation for Craft-UIKit",
   "main": "index.js",
   "module": "index.js",
   "unpkg": "dist/craft-widget-navigationgroup.min.js",
   "dependencies": {
-    "@craftkit/craft-uikit": "^2.x"
+    "@craftkit/craft-uikit": "*"
   },
   "devDependencies": {},
   "scripts": {
