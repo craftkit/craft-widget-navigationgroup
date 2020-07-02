@@ -230,6 +230,9 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 		let callback = options.callback;
 		let route    = options.route;
 		
+		let event  = route ? route.event  : null;  // event is defined if open is called by browser back/forward with popstate event
+		let launch = route ? route.launch : false; // true if called from RootViewController#bringup
+		
 		let disappearingView = this.currentView;
 		let appearingView    = page;
 		
@@ -273,6 +276,24 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 			
 			this.currentView = appearingView;
 			
+			if( launch ){
+				// launching the app
+				window.history.replaceState(
+					{ componentId:this.currentView.componentId, timestamp:Date.now() },
+					this.currentView.title,
+					Craft.Core.Context.getRouter().normalize(this.currentView.path)
+				);
+			}else{
+				if( !event ){
+					// in app navigation
+					window.history.pushState(
+						{ componentId:this.currentView.componentId, timestamp:Date.now() },
+						this.currentView.title,
+						Craft.Core.Context.getRouter().normalize(this.currentView.path)
+					);
+				}
+			}
+			
 			if( disappearingView ){
 				Craft.Core.Transition.animate({
 					element    : disappearingView.view,
@@ -288,13 +309,6 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 					properties : { 'left': '0px', opacity: 1 },
 					duration   : this.GENERAL_ANIM_DURATION,
 					callback   : () => {
-						if( appearingView.path ){
-							window.history.pushState(
-								appearingView.componentId,
-								null,
-								Craft.Core.Context.getRouter().normalize(appearingView.path)
-							);
-						}
 						if( !options.earlycallback && callback ){ callback(); }
 						if( this.BackButton ){
 							this.BackButton.view.style['display'] = 'block';
@@ -308,13 +322,6 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 					properties : { 'left': '0px', opacity: 1 },
 					duration   : this.GENERAL_ANIM_DURATION,
 					callback   : () => {
-						if( appearingView.path ){
-							window.history.pushState(
-								appearingView.componentId,
-								null,
-								Craft.Core.Context.getRouter().normalize(appearingView.path)
-							);
-						}
 						if( !options.earlycallback && callback ){ callback(); }
 						this.relayoutNavigationElements();
 					}
@@ -339,6 +346,9 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 		let page     = options.page;
 		let callback = options.callback;
 		let route    = options.route;
+		
+		let event  = route ? route.event  : null;  // event is defined if open is called by browser back/forward with popstate event
+		let launch = route ? route.launch : false; // true if called from RootViewController#bringup
 		
 		let disappearingView = this.currentView;
 		let appearingView    = page;
@@ -380,6 +390,24 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 			
 			this.currentView = appearingView;
 			
+			if( launch ){
+				// launching the app
+				window.history.replaceState(
+					{ componentId:this.currentView.componentId, timestamp:Date.now() },
+					this.currentView.title,
+					Craft.Core.Context.getRouter().normalize(this.currentView.path)
+				);
+			}else{
+				if( !event ){
+					// in app navigation
+					window.history.pushState(
+						{ componentId:this.currentView.componentId, timestamp:Date.now() },
+						this.currentView.title,
+						Craft.Core.Context.getRouter().normalize(this.currentView.path)
+					);
+				}
+			}
+			
 			if( disappearingView ){
 				disappearingView.viewDidDisappear();
 				disappearingView.view.remove();
@@ -391,13 +419,6 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 					properties : { opacity: 1 },
 					duration   : this.GENERAL_ANIM_DURATION,
 					callback   : () => {
-						if( appearingView.path ){
-							window.history.pushState(
-								appearingView.componentId,
-								null,
-								Craft.Core.Context.getRouter().normalize(appearingView.path)
-							);
-						}
 						if( !options.earlycallback && callback ){ callback(); }
 						this.relayoutNavigationElements();
 					}
@@ -408,13 +429,6 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 					properties : { opacity: 1 },
 					duration   : this.GENERAL_ANIM_DURATION,
 					callback   : () => {
-						if( appearingView.path ){
-							window.history.pushState(
-								appearingView.componentId,
-								null,
-								Craft.Core.Context.getRouter().normalize(appearingView.path)
-							);
-						}
 						if( !options.earlycallback && callback ){ callback(); }
 						this.relayoutNavigationElements();
 					}
@@ -422,16 +436,6 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 			}
 		});
 		return false;
-	}
-	
-	/** 
-	 * Popstate event entrance
-	 * 
-	 * @override
-	 */
-	didReceivePopstate(event,launch){
-		this.reset(); // browser back/forward should reset navigation
-		super.didReceivePopstate(event,launch);
 	}
 	
 	/** 
