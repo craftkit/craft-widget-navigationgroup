@@ -73,7 +73,7 @@ export class Sidemenu extends Craft.UI.View {
 		
 		this.menuView.viewWillAppear( () => {
 			this.contents.appendChild(this.menuView.view);
-			this.menuView.show();
+			this.menuView.showComponent();
 			this.menuView.viewDidAppear();
 			if( callback ){ callback(); }
 		});

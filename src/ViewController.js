@@ -271,7 +271,7 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 			this.contents.appendChild(appearingView.view);
 			appearingView.view.scrollTop = this.Pages[appearingView.componentId].scrollTop;
 			
-			appearingView.show();
+			appearingView.showComponent();
 			appearingView.viewDidAppear();
 			
 			this.currentView = appearingView;
@@ -385,7 +385,7 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 			this.contents.appendChild(appearingView.view);
 			appearingView.view.scrollTop = this.Pages[appearingView.componentId].scrollTop;
 			
-			appearingView.show();
+			appearingView.showComponent();
 			appearingView.viewDidAppear();
 			
 			this.currentView = appearingView;
@@ -507,7 +507,7 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 			if( this.Pages[appearingView.componentId].scrollTop ){
 				appearingView.view.scrollTop = this.Pages[appearingView.componentId].scrollTop;
 			}
-			appearingView.show();
+			appearingView.showComponent();
 			appearingView.viewDidAppear();
 			
 			this.currentView = appearingView;
@@ -570,10 +570,10 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 			return;
 		}
 		if( this.sidemenu_active ){
-			this.Sidemenu.hide();
+			this.Sidemenu.hideComponent();
 			this.sidemenu_active = false;
 		}else{
-			this.Sidemenu.show();
+			this.Sidemenu.showComponent();
 			this.sidemenu_active = true;
 		}
 	}

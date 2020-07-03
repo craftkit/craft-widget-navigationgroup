@@ -1,6 +1,6 @@
 {
   "name": "@craftkit/craft-widget-navigationgroup",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Classic stack navigation for Craft-UIKit",
   "main": "index.js",
   "module": "index.js",
@@ -18,15 +18,15 @@
     "url": "git+https://github.com/craftkit/craft-widget-navigationgroup.git"
   },
   "keywords": [
-  	"WebComponents",
-  	"Shadow DOM",
-  	"OOP",
-  	"SPA",
-  	"PWA",
-  	"frontend",
-	"UI widget",
-	"Stack navigation",
-	"NavigationGruop"
+    "WebComponents",
+    "Shadow DOM",
+    "OOP",
+    "SPA",
+    "PWA",
+    "frontend",
+    "UI widget",
+    "Stack navigation",
+    "NavigationGruop"
   ],
   "author": "",
   "license": "MIT",
