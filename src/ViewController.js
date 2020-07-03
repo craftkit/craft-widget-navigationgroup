@@ -570,10 +570,10 @@ export class ViewController extends Craft.UI.DefaultRootViewController {
 			return;
 		}
 		if( this.sidemenu_active ){
-			this.Sidemenu.hideComponent();
+			this.Sidemenu.hide();
 			this.sidemenu_active = false;
 		}else{
-			this.Sidemenu.showComponent();
+			this.Sidemenu.show();
 			this.sidemenu_active = true;
 		}
 	}
