@@ -1,6 +1,6 @@
 {
   "name": "@craftkit/craft-widget-navigationgroup",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Classic stack navigation for Craft-UIKit",
   "main": "index.js",
   "module": "index.js",
